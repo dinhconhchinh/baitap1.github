@@ -94,5 +94,12 @@ a{
     bottom: 10px;
 }
 .nav{
-    margin-left: 1073px;
+    padding-left: 1073px;
+}
+.list-nav{
+    display: block;
+    width: 50px;
+}
+.nav li{
+    display: inline-block!important;
 }
