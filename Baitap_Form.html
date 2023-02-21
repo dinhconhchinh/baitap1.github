@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./vendors/Bootstrap5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/form.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+           <div class="col-6 mt-5 left">
+                <form action="">
+                    <div class="mb-3 ">
+                        <p class="text-info title">Genneral Information</p>
+                      <select name="title" id="" placeholder="Title">
+                        <option value="">Title</option>
+                      </select>
+                      <div class="row mt-4">
+                        <div class="col-6">
+                            <input class="form-control first-name" type="text" name="firstname" placeholder="First Name"/>
+                          </div>
+                          <div class="col-6">
+                            <input class="form-control last-name" type="text" name="lastname" placeholder="Last Name">
+                          </div>
+                      </div>
+                      <select name="position" class="mt-4" id="" placeholder="Position">
+                        <option value="">Position</option>
+                      </select>
+                      <input class="form-control mt-4 company" type="text" name="company" placeholder="Company"/>
+                      <div class="row">
+                        <div class="col">
+                            <input class="form-control mt-4 business" type="text" name="business" placeholder="Business Arena"/>
+                        </div>
+                        <div class="col">
+                            <select name="employee" class="mt-4" id="" placeholder="Employee">
+                        <option value="">Employee</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+           </div>
+           <div class="col-6 mt-5 right">
+            <form action="">
+                <div class="mb-3">
+                    <p class="title-right">Contact Detail</p>
+                  <input type="text" class="form-control street" value="Street + Nr"/>
+                  <input type="text" class="form-control mt-4 info" value="Addtinaonal Information"/>
+                    <div class="row mt-4">
+                        <div class="col-4">
+                            <input type="text" class="form-control street" value="Zip Code"/>
+                        </div>
+                        <div class="col-8">
+                          <select class="place" name="position" class="mt-4" id="" >
+                            <option value="">Place</option>
+                          </select>
+                            </div>
+                    </div>
+                    <select class="place mt-4" name="position" class="mt-4" id="">
+                      <option value="">Country</option>
+                    </select>
+                    <div class="row mt-4">
+                      <div class="col-4">
+                          <input class="form-control code" type="text" name="code" value="Code+"/>
+                        </div>
+                        <div class="col-8">
+                          <input class="form-control phone" type="text" name="phone" value="Phone Number">
+                        </div>
+                    </div>
+                    <input type="email" class="form-control email mt-4" value="Your Email"/>
+                </div>
+                <div class="mb-3">
+                </div>
+                <div class="mb-3 form-check mt-4">
+                  <input type="checkbox" class="form-check-input check" id="exampleCheck1">
+                  <label class="form-check-label accept" for="exampleCheck1">I do accept the <u>Teams and Conditions</u> of your site</label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 submit">Register Badge</button>
+              </form>
+           </div>
+        </div>
+    </div>
+</body>
+</html>
