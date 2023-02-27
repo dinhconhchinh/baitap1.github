@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background-color: #dcdbdb;
+}
+.header{
+    line-height: 40px;
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.logo i,
+.logo p{
+    padding: 5px;
+    font-size: 25px;
+    color: rgb(218, 75, 75);
+}
+.logo i{
+    margin-left: 10px;
+}
+.search i{
+    float: right;
+    padding: 10px;
+    font-size: 25px;
+    margin-right: 10px;
+}
+.slider{
+    position: relative;
+    margin-top: 66px;
+    padding-top: 45%;
+    background-image: url('/img/anh21.jpg');
+}
+.menu{
+    background-color: #fff;
+    width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30%;
+    position: absolute;
+}
+.nav{
+    background-color: #000;
+}
+.list-nav li a{
+    color: #fff!important;
+}
+.list-nav li:first-child{
+    background-color: red;
+}
+.list-nav li i{
+    padding: 0px 10px;
+}
+.btn{
+    margin-left: 12px;
+    width: 190px;
+    border-radius: 0;
+}
+.buy-ticket{
+    margin-left: 10px;
+}
+.content{
+    background-color: #6e6c6c;
+}
+.content h5{
+    font-size: 30px;
+    color: #fff;
+}
+.content p{
+    color: #fff;
+}
+.content button{
+    border: none;
+    background-color: rgb(236, 58, 58);
+    padding: 10px!important;
+    margin-bottom: 10px!important;
+}
+.contact h5{
+    font-size: 30px;
+}
+.contact p{
+    margin-bottom: 0;
+}
+.contact i{
+    padding-right: 20px;
+}
+.contact input{
+    border-radius: 0;
+    padding: 17px;
+    margin-top: 20px;
+}
+.contact button{
+    margin-top: 20px!important;
+    padding: 10px!important;
+}
+.footer{
+    text-align: center;
+}
+.footer i{
+    font-size: 18px;
+}
+.footer p{
+    opacity: 0.7;
+}
