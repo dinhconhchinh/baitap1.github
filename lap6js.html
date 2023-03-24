@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/lap6js.css">
+    <link rel="stylesheet" href="./vendors/Bootstrap5.3/css/bootstrap.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.3.0-web/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-3">
+                <img src="./img/logo.png" alt="">
+            </div>
+            <div class="col-4">
+                <div class="mt-3 search">
+                    <form action="#" onsubmit="searchProducts()" method="GET" role="search">
+                        <input id="searchSP" type="text" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </form>
+                </div>
+            </div>
+            <div class="col-5">
+                <ul class="mt-3 menu">
+                    <li><a href="">Stats</a></li>
+                    <li><a href="">Supphers</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Payments</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-3 mt-5 ct-left">
+                <h5 class="mt-4 text-light">Search perferences:</h5>
+                <p class="mt-5 text-light">Price range</p>
+                <div class="mt-5 ga"></div>
+                <p class="mt-4 text-light">Location</p>
+                <select class="mt-4 form-control" id="">
+                    <option value="city">City</option>
+                </select>
+                <div class="mt-5 ga"></div>
+                <p class="mt-4 text-light">Category</p>
+                <ul class="products">
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Fruits
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Vegetables
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Drinks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Snacks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Vegetables
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Snacks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Drinks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Snacks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Vegetables
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Drinks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Snacks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Drinks
+                        </label>
+                    </li>
+                    <li>
+                        <label for="">
+                            <input type="checkbox" name="gender" value="Nam" /> Vegetables
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9 mt-5 ct-right">
+                <div id="list" class="row">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        function searchProducts(){
+            event.preventDefault(); //chặn event lại
+            var v = document.getElementById("searchSP").value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function(){
+                var rs = this.responseText;
+                var data = JSON.parse(rs);
+                var products = data.products;
+    
+                for(var i=0;i<products.length;i++){
+                    
+                    var list = document.getElementById("list");
+                    var thumb = products[i].thumbnail;
+                    var title = products[i].title;
+                    var dp = products[i].discountPercentage;
+                    var description = products[i].description;
+        
+                    var div = `<div class="col-4 mt-3">
+                                <div class="card list-img">
+                                    <img src="${thumb}" class="card-img-top" alt="...">
+                                    <div class="card-body mt-3 card-bd">
+                                      <p class="card-title" style="opacity: 0.8;">${title}</p>
+                                      <p class="card-text mb-0 price" style="width: auto;">${dp}$/kg</p>
+                                    </div>
+                                    <p class="card-text note">${description}</p>
+                                  </div>
+                            </div>`
+        
+                    list.innerHTML += div;
+                }
+    
+            }
+            xhttp.open("GET",`https://dummyjson.com/products/search?q=${v}`);
+            xhttp.send(); 
+        }
+
+    </script>
+</body>
+</html>
