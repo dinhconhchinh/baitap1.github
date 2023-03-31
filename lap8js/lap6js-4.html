@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="vendors/bootstrap5.3/css/bootstrap.min.css"/>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="row" id="no-products" style="display: none;">
+                <div class="col-6">
+                    <div class="alert alert-primary" role="alert">
+                        Không có sản phẩm yêu thích nào !!!
+                      </div>
+                </div>
+            </div>
+            <div class="row" id="has-products">
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Add to cart</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="list">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        reloadHtml();
+        function addToCart(x){
+            var conf = confirm("Bạn muốn thêm sản phẩm vào giỏ hàng?");
+            if(conf == false){
+                return;
+            }
+            var cart = localStorage.getItem("cart");
+            if(cart == null){
+                cart = [];
+            }else{
+                cart = JSON.parse(cart);
+            }
+            var f = false;
+          for(var i=0;i<cart.length;i++){
+            if(x == cart[i].id){
+              f = true;
+              cart[i].buy_qty =  cart[i].buy_qty+1;
+              localStorage.setItem("cart",JSON.stringify(cart));
+              break;
+            }
+          }
+          if(f==false){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function(){
+                var rs = this.responseText;
+                var data = JSON.parse(rs);
+                //console.log(data);
+                data.buy_qty = 1;
+                cart.push(data);
+                localStorage.setItem("cart",JSON.stringify(cart));
+            }
+            xhttp.open("GET",`https://dummyjson.com/products/${x}`);
+            xhttp.send();
+          }
+        }
+        function removeItem(x){
+            var conf = confirm("Bạn muốn xóa sản phẩm khỏi giỏ hàng?");
+            if(conf == false){
+                return;
+            }
+            var love = localStorage.getItem("wishlist");
+            if(love == null){
+            love = [];
+            }else{
+            love = JSON.parse(love);
+            }
+            var c = [];
+            for(var i=0;i<love.length;i++){
+                if(love[i].id != x){
+                    c.push(love[i]);    
+                }
+            }
+            localStorage.setItem("wishlist",JSON.stringify(c));
+            // window.location.reload();
+                
+            reloadHtml();
+        }
+        function reloadHtml(){
+            var love = localStorage.getItem("wishlist");
+          if(love == null){
+            love = [];
+          }else{
+            love = JSON.parse(love);
+          }
+            if(love.length == 0){
+                document.getElementById("no-products").style.display = "block";
+                document.getElementById("has-products").style.display = "none";
+            }
+            var html = ``;
+            for(var i=0;i<love.length;i++){
+                var img = love[i].thumbnail;
+                var name = love[i].title;
+                var price = love[i].price;
+                var id = love[i].id;
+                html += `<tr>       
+                                    <td><img width="150" class="img-thumbnail" src="${img}"/></td>
+                                    <td>${name}</td>
+                                    <td>${price}$</td>
+                                    <td>1</td>
+                                    <td><button type="button" onclick="addToCart(${id})" class="btn btn-danger">Add to cart</button></td>
+                                    <td><span onclick="removeItem(${id})" class="text-danger">X</span></td>
+                                </tr>`;
+            }
+            document.getElementById("list").innerHTML = html;
+        }
+    </script>
+</body>
+</html>
